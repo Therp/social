@@ -4,6 +4,7 @@
     "name": "Mail Hide Chatter Send Message",
     "version": "16.0.1.0.0",
     "author": "Therp BV, Odoo Community Association (OCA)",
+    "maintainers": ["NL66278"],
     "website": "https://github.com/OCA/social",
     "license": "AGPL-3",
     "summary": "Hide 'Send message' button on chatter",

@@ -28,9 +28,9 @@ Mail Hide Chatter Send Message
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module was written to hide the Send Message button on the chatter/
+This module was written to hide the Send Message button on the chatter.
 
-his is usefull for installations which do not want to send messages
+This is usefull for installations which do not want to send messages
 outside of the organisation, but still want the ability to log notes
 and, where applicable, see messages received on a model record.
 
@@ -74,6 +74,14 @@ This module is maintained by the OCA.
 OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
+
+.. |maintainer-NL66278| image:: https://github.com/NL66278.png?size=40px
+    :target: https://github.com/NL66278
+    :alt: NL66278
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-NL66278| 
 
 This module is part of the `OCA/social <https://github.com/OCA/social/tree/16.0/mail_hide_chatter_send_message>`_ project on GitHub.
 
