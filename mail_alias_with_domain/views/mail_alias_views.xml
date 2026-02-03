@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2023 Solvti sp. z o.o. (https://solvti.pl) -->
+<!-- Copyright 2025 Therp BV (https://therp.nl) -->
+<odoo>
+    <record model="ir.ui.view" id="view_mail_alias_form">
+        <field name="name">mail.alias.form - mail_alias_with_domain</field>
+        <field name="model">mail.alias</field>
+        <field name="inherit_id" ref="mail.view_mail_alias_form" />
+        <field name="arch" type="xml">
+            <field name="alias_name" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="alias_name" position="before">
+                <field name="alias_entry" class="oe_inline" required="1" />
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_mail_alias_tree">
+        <field name="name">mail.alias.tree.inherit - mail_alias_with_domain</field>
+        <field name="model">mail.alias</field>
+        <field name="inherit_id" ref="mail.view_mail_alias_tree" />
+        <field name="arch" type="xml">
+            <field name="alias_name" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="alias_name" position="before">
+                <field name="alias_entry" />
+            </field>
+        </field>
+    </record>
+</odoo>
