@@ -1,4 +1,5 @@
 # Copyright 2015 ACSONE SA/NV
+# Copyright 2026 Therp BV <https://therp.nl>.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo.tests import common
@@ -16,6 +17,14 @@ class TestAttachExistingAttachment(common.TransactionCase):
                 "parent_id": False,
             }
         )
+        self.partner_02 = self.env["res.partner"].create(
+            {
+                "name": "Partner 2",
+                "email": "partner2@example.org",
+                "is_company": True,
+                "parent_id": False,
+            }
+        )
 
     def test_send_email_attachment(self):
         attach1 = self.env["ir.attachment"].create(
@@ -26,12 +35,23 @@ class TestAttachExistingAttachment(common.TransactionCase):
                 "res_id": self.partner_01.id,
             }
         )
+        attach2 = self.env["ir.attachment"].create(
+            {
+                "name": "Attach2",
+                "datas": "bW9kZWwgdGVzdA==",
+                "res_model": "res.partner",
+                "res_id": self.partner_02.id,
+            }
+        )
         vals = {
             "model": "res.partner",
             "partner_ids": [(6, 0, [self.partner_01.id])],
             "res_id": self.partner_01.id,
             "object_attachment_ids": [(6, 0, [attach1.id])],
+            # NEW
+            "model_attachment_ids": [(6, 0, [attach2.id])],
         }
         mail = self.env["mail.compose.message"].create(vals)
         values = mail.get_mail_values([self.partner_01.id])
         self.assertTrue(attach1.id in values[self.partner_01.id]["attachment_ids"])
+        self.assertTrue(attach2.id in values[self.partner_01.id]["attachment_ids"])

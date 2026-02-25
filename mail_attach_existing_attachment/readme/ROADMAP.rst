@@ -1,1 +1,1 @@
-* The module only allows the addition of attachments linked to the object.
+*  Model attachments are filtered by model but not further restricted.
