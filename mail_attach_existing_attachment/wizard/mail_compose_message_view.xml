@@ -15,6 +15,13 @@
                     domain="[('res_model', '=', model), ('res_id', '=', res_id)]"
                     attrs="{'invisible': [('can_attach_attachment', '=', False)]}"
                 />
+                <field
+                    name="model_attachment_ids"
+                    widget="many2many_tags"
+                    options="{'no_create': True}"
+                    domain="[('res_model', '=', model), ('res_id', '!=', False), ('res_id', '!=', res_id)]"
+                    attrs="{'invisible': [('can_attach_attachment', '=', False)]}"
+                />
             </xpath>
         </field>
     </record>
