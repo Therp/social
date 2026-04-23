@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===============================
 Mail Attach Existing Attachment
 ===============================
@@ -13,7 +17,7 @@ Mail Attach Existing Attachment
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fsocial-lightgray.png?logo=github
@@ -28,8 +32,16 @@ Mail Attach Existing Attachment
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module was written to add the possibility to add attachments located on
-the object by sending it by email with the mail compose message wizard
+This module extends the mail compose message wizard to allow selecting
+existing attachments when sending an email.
+
+It provides two attachment selection mechanisms:
+
+* Object Attachments — attachments linked to the current record.
+* Model Attachments — attachments linked to other records of the same model.
+
+This makes it possible to reuse documents already stored on other
+records of the same model without re-uploading them.
 
 **Table of contents**
 
@@ -46,7 +58,13 @@ To use this module, you need to:
 .. figure:: https://raw.githubusercontent.com/OCA/social/16.0/mail_attach_existing_attachment/static/description/attachment.png
    :alt: Attachment on purchase order
 
-* Then, by sending the object via email, you can select the attachment added earlier
+* Optionally, add attachments on other records of the same model
+  (for example, on another Purchase Order or Partner record).
+
+* Then, by sending the object via email, you can:
+
+  * Select attachments linked to the current object.
+  * Select attachments linked to other records of the same model.
 
 .. figure:: https://raw.githubusercontent.com/OCA/social/16.0/mail_attach_existing_attachment/static/description/ex_mail_compose_message.png
    :alt: Sends the Purchase Order by email
@@ -54,7 +72,7 @@ To use this module, you need to:
 Known issues / Roadmap
 ======================
 
-* The module only allows the addition of attachments linked to the object.
+*  Model attachments are filtered by model but not further restricted.
 
 Bug Tracker
 ===========
@@ -74,6 +92,7 @@ Authors
 
 * ACSONE SA/NV
 * Tecnativa
+* Therp BV
 
 Contributors
 ~~~~~~~~~~~~
@@ -84,6 +103,9 @@ Contributors
 
   * Sergio Teruel
   * Ernesto Tejeda
+* `Therp BV <https://www.therp.nl>`_:
+   
+  * Nikos Tsirintanis <ntsirintanis@therp.nl>
 
 Maintainers
 ~~~~~~~~~~~

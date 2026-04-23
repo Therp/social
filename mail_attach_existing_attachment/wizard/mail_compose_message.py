@@ -1,4 +1,5 @@
 # Copyright 2015 ACSONE SA/NV
+# Copyright 2026 Therp BV <https://therp.nl>.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
@@ -27,11 +28,17 @@ class MailComposeMessage(models.TransientModel):
         column2="attachment_id",
         string="Object Attachments",
     )
+    model_attachment_ids = fields.Many2many(
+        comodel_name="ir.attachment",
+        string="Model Attachments",
+    )
 
     def get_mail_values(self, res_ids):
         res = super().get_mail_values(res_ids)
-        if self.object_attachment_ids.ids and self.model and len(res_ids) == 1:
-            res[res_ids[0]].setdefault("attachment_ids", []).extend(
-                self.object_attachment_ids.ids
-            )
+        if self.model and len(res_ids) == 1:
+            attachment_ids = set(res[res_ids[0]].get("attachment_ids", []))
+            attachment_ids.update(self.object_attachment_ids.ids)
+            attachment_ids.update(self.model_attachment_ids.ids)
+            if attachment_ids:
+                res[res_ids[0]]["attachment_ids"] = list(attachment_ids)
         return res
